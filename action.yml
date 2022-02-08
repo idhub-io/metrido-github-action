@@ -1,0 +1,50 @@
+# action.yml
+name: 'Metrido'
+author: https://github.com/qcastel
+description: 'Metrido - Send devops events to Metrido'
+branding:
+  color: gray-dark
+  icon: aperture
+inputs:
+  event-type:
+    description: 'Type of event ( "BUILD" | "DEPLOY" | "INCIDENT" | "MERGED_COMMIT" | "RELEASE" | "TEST" ).'
+    required: true
+    default: 'MERGED_COMMIT'
+  ticket-id:
+    description: 'Ticket ID'
+    required: false
+  change-type:
+    description: 'Change type ("CODE" | "DEPLOY")'
+    required: false
+  tag:
+    description: 'The release tag (only define for release event type)'
+    required: false
+  title:
+    description: 'The release title (only define for release or incident event type)'
+    required: false
+  summary:
+    description: 'The release summary (only define for release event type)'
+    required: false
+  deploy-status:
+    description: 'The deploy status ("SUCCEEDED" | "FAILED") (only define for release deploy type)'
+    required: false
+  environment:
+    description: 'The deployed environment (only define for deploy deploy type)'
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args: 
+    - github-actions.sh
+  env:
+    EVENT_TYPE: ${{ inputs.event-type }}
+    TICKET_ID: ${{ inputs.ticket-id }}
+    CHANGE_TYPE: ${{ inputs.ticket-id }}
+    TAG: ${{ inputs.tag }}
+    TITLE: ${{ inputs.title }}
+    SUMMARY: ${{ inputs.summary }}
+    STATUS: ${{ inputs.deploy-status }}
+    RELEASE_TAG: ${{ inputs.tag }}
+    ENVIRONMENT: ${{ inputs.environment }}
+    COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
