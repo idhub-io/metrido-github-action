@@ -6,6 +6,12 @@ branding:
   color: gray-dark
   icon: aperture
 inputs:
+  client-id:
+    description: 'Metrido client ID'
+    required: true
+  client-secret:
+    description: 'Metrido client secret'
+    required: true
   event-type:
     description: 'Type of event ( "BUILD" | "DEPLOY" | "INCIDENT" | "MERGED_COMMIT" | "RELEASE" | "TEST" ).'
     required: true
@@ -38,6 +44,8 @@ runs:
   args: 
     - github-actions.sh
   env:
+    METRIDO_CLIENT_ID: ${{ inputs.client-id }}
+    METRIDO_CLIENT_SECRET: ${{ inputs.client-secret }}
     EVENT_TYPE: ${{ inputs.event-type }}
     TICKET_ID: ${{ inputs.ticket-id }}
     CHANGE_TYPE: ${{ inputs.ticket-id }}
