@@ -55,4 +55,5 @@ runs:
     STATUS: ${{ inputs.deploy-status }}
     RELEASE_TAG: ${{ inputs.tag }}
     ENVIRONMENT: ${{ inputs.environment }}
-    COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+    COMMIT_MESSAGE: "${{ github.event.head_commit.message }}"
+
