@@ -12,6 +12,9 @@ inputs:
   client-secret:
     description: 'Metrido client secret'
     required: true
+  commit-message:
+    description: 'Commit message'
+    required: true
   event-type:
     description: 'Type of event ( "BUILD" | "DEPLOY" | "INCIDENT" | "MERGED_COMMIT" | "RELEASE" | "TEST" ).'
     required: true
@@ -55,5 +58,4 @@ runs:
     STATUS: ${{ inputs.deploy-status }}
     RELEASE_TAG: ${{ inputs.tag }}
     ENVIRONMENT: ${{ inputs.environment }}
-    COMMIT_MESSAGE: "${{ github.event.head_commit.message }}"
 
