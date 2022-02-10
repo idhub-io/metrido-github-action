@@ -31,11 +31,15 @@ inputs:
   summary:
     description: 'The release summary (only define for release event type)'
     required: false
-  step-name:
-    description: 'The name of the step to monitor the result'
+  step-status:
+    description: 'The step status to monitor'
     required: false
   environment:
     description: 'The deployed environment (only define for deploy deploy type)'
+    required: false
+  commit-message:
+    description: 'Commit message'
+    default: ${{ github.event.head_commit.message }}
     required: false
 
 runs:
@@ -52,7 +56,9 @@ runs:
     TAG: ${{ inputs.tag }}
     TITLE: ${{ inputs.title }}
     SUMMARY: ${{ inputs.summary }}
-    STEP_NAME: ${{ inputs.step-name }}
+    STEP_STATUS: ${{ inputs.step-status }}
     RELEASE_TAG: ${{ inputs.tag }}
     ENVIRONMENT: ${{ inputs.environment }}
+    COMMIT_MESSAGE: ${{ inputs.commit-message }}
+
 
