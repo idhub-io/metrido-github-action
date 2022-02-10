@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -e
 
 export REPOSITORY="${GITHUB_REPOSITORY}"
 export COMMIT_ID="${GITHUB_SHA}"
