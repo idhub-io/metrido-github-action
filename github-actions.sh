@@ -7,14 +7,10 @@ export BRANCH="${GITHUB_REF_NAME}"
 export SOURCE="GITHUB"
 export AUTHOR="${GITHUB_ACTOR}"
 
-if [ -d "${STEP_STATUS}" ]; then
-  echo "Step status defined: ${STEP_STATUS}"
-
-  if [[ "${STEP_STATUS}" == "success" ]]; then
-      export STATUS="SUCCEEDED"
-  else
-      export STATUS="FAILED"
-  fi
+if [[ "${STEP_STATUS}" == "success" ]]; then
+    export STATUS="SUCCEEDED"
+else
+    export STATUS="FAILED"
 fi
 
 entrypoint.sh
