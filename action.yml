@@ -51,7 +51,8 @@ runs:
     METRIDO_CLIENT_SECRET: ${{ inputs.client-secret }}
     EVENT_TYPE: ${{ inputs.event-type }}
     TICKET_ID: ${{ inputs.ticket-id }}
-    CHANGE_TYPE: ${{ inputs.ticket-id }}
+    CHANGE_TYPE: ${{ inputs.change-type }}
+    COMMIT_MESSAGE: ${{ inputs.commit-message }}
     TAG: ${{ inputs.tag }}
     TITLE: ${{ inputs.title }}
     SUMMARY: ${{ inputs.summary }}
