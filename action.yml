@@ -12,9 +12,6 @@ inputs:
   client-secret:
     description: 'Metrido client secret'
     required: true
-  commit-message:
-    description: 'Commit message'
-    required: true
   event-type:
     description: 'Type of event ( "BUILD" | "DEPLOY" | "INCIDENT" | "MERGED_COMMIT" | "RELEASE" | "TEST" ).'
     required: true
@@ -52,7 +49,6 @@ runs:
     EVENT_TYPE: ${{ inputs.event-type }}
     TICKET_ID: ${{ inputs.ticket-id }}
     CHANGE_TYPE: ${{ inputs.change-type }}
-    COMMIT_MESSAGE: ${{ inputs.commit-message }}
     TAG: ${{ inputs.tag }}
     TITLE: ${{ inputs.title }}
     SUMMARY: ${{ inputs.summary }}
